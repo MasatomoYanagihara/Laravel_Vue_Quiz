@@ -6,17 +6,17 @@ import Quiz from "./components/page/Quiz";
 Vue.use(Router);
 
 export default new Router({
-    mode: "history", // SPAのURLにはhistoryモード(#ハッシュが付かないタイプを使います)
+    mode: "history", // SPAのURLにはhistoryモード(#ハッシュが付かないタイプを使う)
     routes: [
         {
             path: "/",
             name: "home",
-            component: Home // URL「/」に対してHomeコンポーネントを使うという意味です
+            component: Home // URL「/」に対してHomeコンポーネントを使うという意味
         },
         {
             path: "/quiz",
             name: "quiz",
-            component: Quiz // URL「/quiz」に対してQuizコンポーネントを使うという意味です
+            component: Quiz // URL「/quiz」に対してQuizコンポーネントを使うという意味
         }
     ]
 });

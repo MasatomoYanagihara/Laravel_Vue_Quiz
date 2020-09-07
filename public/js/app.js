@@ -71116,16 +71116,16 @@ __webpack_require__.r(__webpack_exports__);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
 /* harmony default export */ __webpack_exports__["default"] = (new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: "history",
-  // SPAのURLにはhistoryモード(#ハッシュが付かないタイプを使います)
+  // SPAのURLにはhistoryモード(#ハッシュが付かないタイプを使う)
   routes: [{
     path: "/",
     name: "home",
-    component: _components_page_Home__WEBPACK_IMPORTED_MODULE_2__["default"] // URL「/」に対してHomeコンポーネントを使うという意味です
+    component: _components_page_Home__WEBPACK_IMPORTED_MODULE_2__["default"] // URL「/」に対してHomeコンポーネントを使うという意味
 
   }, {
     path: "/quiz",
     name: "quiz",
-    component: _components_page_Quiz__WEBPACK_IMPORTED_MODULE_3__["default"] // URL「/quiz」に対してQuizコンポーネントを使うという意味です
+    component: _components_page_Quiz__WEBPACK_IMPORTED_MODULE_3__["default"] // URL「/quiz」に対してQuizコンポーネントを使うという意味
 
   }]
 }));

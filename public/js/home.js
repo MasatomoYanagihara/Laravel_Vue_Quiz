@@ -51629,9 +51629,9 @@ __webpack_require__.r(__webpack_exports__);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_social_sharing__WEBPACK_IMPORTED_MODULE_2___default.a);
 new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: "app",
-  // 「el」はアプリケーションを紐付ける要素のセレクタです
+  // 「el」はアプリケーションを紐付ける要素のセレクタ
   components: {
-    app: _components_page_Home__WEBPACK_IMPORTED_MODULE_1__["default"] //使用するコンポーネントの名称と使うコンポーネントを指定します（app:名称, App(./components/HelloWorld)使うコンポーネント）を指定します
+    app: _components_page_Home__WEBPACK_IMPORTED_MODULE_1__["default"] //使用するコンポーネントの名称と使うコンポーネントを指定します（app:名称, App(./components/HelloWorld)使うコンポーネント）を指定する
 
   }
 });
