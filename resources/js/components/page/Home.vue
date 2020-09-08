@@ -1,7 +1,6 @@
 <template>
     <div>
         <main>
-            <The-Header></The-Header>
             <div class="container">
                 <article class="col-md-8 col-xs-12">
                     <section class="home-quiz__introduction">
@@ -122,20 +121,15 @@
                 <The-Sidebar></The-Sidebar>
             </div>
         </main>
-        <The-Footer></The-Footer>
     </div>
 </template>
 
 <script>
-import TheHeader from "../layout/TheHeader";
-import TheFooter from "../layout/TheFooter";
 import TheSidebar from "../layout/TheSidebar";
 import BarChart from "../module/BarChart";
 
 export default {
     components: {
-        TheHeader,
-        TheFooter,
         TheSidebar,
         BarChart
     },
