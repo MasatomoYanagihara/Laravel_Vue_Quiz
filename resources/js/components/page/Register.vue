@@ -14,8 +14,10 @@
                   id="register"
                   method="post"
                   tag="form"
+                  @submit.prevent="register()"
                   v-slot="{ invalid }"
                 >
+                  <input type="hidden" name="_token" :value="csrf" />
                   <div class="form-group">
                     <label for="name" class="col-md-4 control-label">名前</label>
 
@@ -100,7 +102,7 @@
 
 <script>
 import { ValidationProvider, ValidationObserver, extend } from "vee-validate";
-import { required, max, min, email, confirmed } from "vee-validate/dist/rules";
+import { required, max, min, email, confirmed } from "vee-validate/dist/rules"; // 使用するバリデーションルール
 
 extend("required", {
   ...required,
@@ -134,7 +136,18 @@ export default {
       email: "",
       password: "",
       password_confirmation: "",
+      csrf: document
+        .querySelector('meta[name="csrf-token"]')
+        .getAttribute("content"),
     };
+  },
+  methods: {
+    async register() {
+      const isValid = await this.$refs.observer.validate(); //バリデーションがOKならtrueとなる
+      if (isValid) {
+        document.querySelector("#register").submit();
+      }
+    },
   },
 };
 </script>
