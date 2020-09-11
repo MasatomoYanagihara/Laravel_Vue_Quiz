@@ -12,7 +12,7 @@
 
 <body>
   <div id="app">
-    <app />
+    <app :errors="{{ $errors }}" />
   </div>
   <script src="/js/app.js"></script>
 </body>
