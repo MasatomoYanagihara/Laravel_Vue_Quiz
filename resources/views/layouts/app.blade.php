@@ -12,7 +12,7 @@
 
 <body>
   <div id="app">
-    <app :errors="{{ $errors }}" />
+    <app :errors="{{ $errors }}" /><!-- <app />はMainPage.vue -->
   </div>
   <script src="/js/app.js"></script>
 </body>
