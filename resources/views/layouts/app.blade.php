@@ -12,7 +12,10 @@
 
 <body>
   <div id="app">
-    <app :errors="{{ $errors }}" /><!-- <app />はMainPage.vue -->
+    <!-- <app />はMainPage.vue -->
+    <!-- propsで文字列ではなくJSの式だとVue.jsに伝えるには、v-bindを使う -->
+    <!-- ??はPHPの機能のNULL合体演算子。値を取得できない場合は、空の配列を渡す。 -->
+    <app :errors="{{ $errors }}" :auth="{{ Auth::user() ?? '[]' }}" />
   </div>
   <script src="/js/app.js"></script>
 </body>
