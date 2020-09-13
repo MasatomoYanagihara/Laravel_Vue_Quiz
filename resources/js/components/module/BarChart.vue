@@ -3,19 +3,15 @@ import { Bar } from "vue-chartjs";
 
 export default {
   extends: Bar,
-  mounted() {
-    this.renderChart(
-      {
-        labels: ["タ・ナカ", "Suzuki", "Saito", "Moriyama", "アオキ", "村町"],
-        datasets: [
-          {
-            label: "最高得点率",
-            backgroundColor: "rgba(0, 170, 248, 0.47)",
-            data: [100, 90, 80, 70, 60, 50],
-          },
-        ],
-      },
-      {
+  props: {
+    // 親からchartDataを受け取る
+    chartData: {
+      type: Object,
+    },
+  },
+  methods: {
+    renderBarChart() {
+      this.renderChart(this.chartData, {
         scales: {
           yAxes: [
             {
@@ -27,8 +23,8 @@ export default {
             },
           ],
         },
-      }
-    );
+      });
+    },
   },
 };
 </script>

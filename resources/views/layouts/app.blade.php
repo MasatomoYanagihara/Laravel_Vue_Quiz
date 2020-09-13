@@ -5,9 +5,14 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="/css/app.css" rel="stylesheet">
+  
+  <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
+
   <title>4 Answers Quiz 4択クイズ&クイズ徹底解説</title>
+
+  <!-- Styles -->
+  <link href="/css/app.css" rel="stylesheet">
 </head>
 
 <body>

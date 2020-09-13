@@ -18,7 +18,18 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group(['middleware' => ['api']], function () {
+    // /api/information
+    // お知らせデータ
     Route::get('information', 'Api\InformationController@index');
+
+    // /api/category
+    // カテゴリーデータ
     Route::get('category', 'Api\CategoryController@index');
+
+    // /api/quiz
     Route::get('quiz', 'Api\QuizController@index');
+
+    // /api/ranking
+    // 点数ランキングデータ
+    Route::get('ranking', 'Api\RankingController@index');
 });

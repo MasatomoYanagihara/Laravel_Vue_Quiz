@@ -12,6 +12,7 @@ Route::get('/register', function () {
     return view('auth.register.index');
 });
 
+// Route::HTTPメソッド('パス', 'コントローラー@関数');
 Route::post('/register', 'Auth\RegisterController@register');
 Route::post('/login', 'Auth\LoginController@login');
 Route::post('/logout', 'Auth\LoginController@logout');
