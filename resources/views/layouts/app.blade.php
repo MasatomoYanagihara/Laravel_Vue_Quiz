@@ -5,9 +5,13 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
+
+  <!-- API認証に必要なtokenをHeaderに埋め込む -->
+  <meta name="api-token" content="{{ session()->get('api_token') ?? '' }}">
+
 
   <title>4 Answers Quiz 4択クイズ&クイズ徹底解説</title>
 

@@ -2585,6 +2585,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     TheSidebar: _layout_TheSidebar__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  mounted: function mounted() {
+    this.$http.get("/api/user").then(function (response) {
+      console.log(response.data);
+    });
   }
 });
 
@@ -75619,7 +75624,11 @@ window.$ = window.jQuery = jquery__WEBPACK_IMPORTED_MODULE_4___default.a;
 
 __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/npm.js");
 
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$http = axios__WEBPACK_IMPORTED_MODULE_3___default.a;
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$http = axios__WEBPACK_IMPORTED_MODULE_3___default.a; // axiosの共通ヘッダーにtokenを設定
+// この設定をすることでユーザー認証が行われていれば、
+// どのVueファイルでもユーザー認証に必要なAPIのtokenをリクエストヘッダーに設定できる
+
+axios__WEBPACK_IMPORTED_MODULE_3___default.a.defaults.headers.common["Authorization"] = "Bearer " + document.querySelector('meta[name="api-token"]').getAttribute("content");
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_social_sharing__WEBPACK_IMPORTED_MODULE_2___default.a);
 new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   router: _router_js__WEBPACK_IMPORTED_MODULE_1__["default"],

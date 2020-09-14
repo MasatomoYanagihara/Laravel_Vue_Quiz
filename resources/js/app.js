@@ -10,6 +10,13 @@ require("bootstrap");
 
 Vue.prototype.$http = axios;
 
+// axiosの共通ヘッダーにtokenを設定
+// この設定をすることでユーザー認証が行われていれば、
+// どのVueファイルでもユーザー認証に必要なAPIのtokenをリクエストヘッダーに設定できる
+axios.defaults.headers.common["Authorization"] =
+    "Bearer " +
+    document.querySelector('meta[name="api-token"]').getAttribute("content");
+
 Vue.use(SocialSharing);
 
 new Vue({

@@ -44,7 +44,7 @@ return [
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
-            'hash' => false,
+            'hash' => true, // true（apiの認証時に使用するtokenのハッシュ化を有効（セキュリティ強化））
         ],
     ],
 
