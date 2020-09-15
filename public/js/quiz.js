@@ -361,13 +361,23 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     var categories = this.$route.query.categories;
+    var loader = this.$loading.show();
     this.$http.get("/api/quiz?categories=".concat(categories)).then(function (response) {
-      _this.quizData = response.data;
+      _this.quizData = response.data; // 10問より少なかったら初期画面に戻す
 
-      _this.findNextQuiz(0); // 初回表示時はクイズデータの１番目を設定
+      if (_this.quizData.length < 10) {
+        alert("クイズが10問以下のため、初期画面に戻ります。カテゴリーを選択し直してください");
+        location.href = "/";
+      } else {
+        _this.findNextQuiz(0); // 初回表示時はクイズデータの１番目を設定
 
 
-      console.log(_this.quizData);
+        loader.hide;
+      }
+    }) // 例外発生時も初期画面に戻す
+    ["catch"](function (error) {
+      alert("クイズの読み込みに失敗したため、初期画面に戻ります");
+      location.href = "/";
     });
   },
   methods: {
@@ -395,6 +405,8 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     findNextQuiz: function findNextQuiz(quizNumber) {
+      window.scroll(0, 0); // 「次の問題にへ」クリック後、画面を初期位置に戻す
+
       this.title = this.quizData[quizNumber].title;
       this.answers = [this.quizData[quizNumber].answer.answer_1, this.quizData[quizNumber].answer.answer_2, this.quizData[quizNumber].answer.answer_3, this.quizData[quizNumber].answer.answer_4];
       this.commentary = this.quizData[quizNumber].answer.commentary;

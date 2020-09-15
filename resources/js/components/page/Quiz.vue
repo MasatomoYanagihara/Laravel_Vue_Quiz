@@ -145,11 +145,27 @@ export default {
     },
     mounted() {
         const categories = this.$route.query.categories;
-        this.$http.get(`/api/quiz?categories=${categories}`).then(response => {
-            this.quizData = response.data;
-            this.findNextQuiz(0); // 初回表示時はクイズデータの１番目を設定
-            console.log(this.quizData);
-        });
+        const loader = this.$loading.show();
+        this.$http
+            .get(`/api/quiz?categories=${categories}`)
+            .then(response => {
+                this.quizData = response.data;
+                // 10問より少なかったら初期画面に戻す
+                if (this.quizData.length < 10) {
+                    alert(
+                        "クイズが10問以下のため、初期画面に戻ります。カテゴリーを選択し直してください"
+                    );
+                    location.href = "/";
+                } else {
+                    this.findNextQuiz(0); // 初回表示時はクイズデータの１番目を設定
+                    loader.hide;
+                }
+            })
+            // 例外発生時も初期画面に戻す
+            .catch(error => {
+                alert("クイズの読み込みに失敗したため、初期画面に戻ります");
+                location.href = "/";
+            });
     },
     methods: {
         goAnswer(selectAnswerNum) {
@@ -176,6 +192,7 @@ export default {
             }
         },
         findNextQuiz(quizNumber) {
+            window.scroll(0, 0); // 「次の問題にへ」クリック後、画面を初期位置に戻す
             this.title = this.quizData[quizNumber].title;
             this.answers = [
                 this.quizData[quizNumber].answer.answer_1,
