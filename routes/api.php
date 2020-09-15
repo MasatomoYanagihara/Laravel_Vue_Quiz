@@ -13,9 +13,12 @@ use Illuminate\Http\Request;
 |
 */
 
+// API認証OKならアクセス可
+Route::middleware('auth:api')->get('/mypage', 'Api\MypageController@index');
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
 
 Route::group(['middleware' => ['api']], function () {
     // /api/information
@@ -32,6 +35,8 @@ Route::group(['middleware' => ['api']], function () {
     // /api/ranking
     // 点数ランキングデータ
     Route::get('ranking', 'Api\RankingController@index');
-});
 
-Route::middleware('auth:api')->get('/mypage', 'Api\MypageController@index');
+    // /api/keyword
+    // キーワードデータ
+    Route::get('keyword', 'Api\KeywordController@index');
+});
