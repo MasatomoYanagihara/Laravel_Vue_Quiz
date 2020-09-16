@@ -41,20 +41,10 @@
 
                             <div class>
                                 全項目チェック
-                                <button
-                                    type="button"
-                                    name="check_all"
-                                    id="check-all"
-                                    value="1"
-                                >
+                                <button type="button" @click="checkAll">
                                     ON
                                 </button>
-                                <button
-                                    type="button"
-                                    name="check_all_off"
-                                    id="check-all-off"
-                                    value="1"
-                                >
+                                <button type="button" @click="checkAllOff">
                                     OFF
                                 </button>
                             </div>
@@ -184,6 +174,16 @@ export default {
         }
     },
     methods: {
+        checkAll() {
+            let val = [];
+            this.category.forEach(element => {
+                val.push(element.id);
+            });
+            this.categories = val;
+        },
+        checkAllOff() {
+            this.categories = [];
+        },
         goQuiz() {
             this.$router.push("/quiz?categories=" + this.categories);
         },
