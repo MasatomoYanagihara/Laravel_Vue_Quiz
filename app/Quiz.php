@@ -19,4 +19,15 @@ class Quiz extends Model
     {
         return $this->hasOne('App\Category', 'id', 'categories_id');
     }
+
+    public static function boot()
+    {
+        // boot()は登録や削除の際に実行されるメソッド
+        parent::boot();
+
+        // リレーションで紐づいたAnswerを削除
+        static::deleting(function ($answer_model) {
+            $answer_model->answer()->delete();
+        });
+    }
 }
