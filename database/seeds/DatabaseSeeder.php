@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call(InformationTableSeeder::class);
         $this->call(QuizTableSeeder::class);
         $this->call(RankingTableDummySeeder::class);
-        $this->call(KeywordTableSeeder::class);
+        $this->call(KeywordTableSSeeder::class);
+        $this->call(AdminTableSSeeder::class);
     }
 }
